@@ -11,11 +11,15 @@ XYscope xy;
 // minim is required to generate audio
 import ddf.minim.*; 
 
+boolean debugView = false;
+
 void setup() {
-  size(512, 512);
+  size(512, 512, P2D);
 
   // initialize XYscope with default sound out
   xy = new XYscope(this);
+  
+  bloomSetup();
 }
 
 
@@ -27,6 +31,8 @@ void draw() {
 
   // draw all analytics
   xy.drawAll();
+  
+  bloomDraw();
 }
 
 void mouseDragged() {
